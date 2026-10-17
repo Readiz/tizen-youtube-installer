@@ -40,7 +40,7 @@ synthetic test certificates; production signing uses JCA.
 Target 36 behavior: app uses INTERNET permission for local networking. On a future
 migration to targetSdk 37+, implement ACCESS_LOCAL_NETWORK permission flow and tests:
 https://developer.android.com/privacy-and-security/local-network-permission
-Do not label the current target-36 prototype as fully tested on Android 17.
+Do not label the current target-36 build as fully tested on Android 17.
 
 Live release smoke check (explicit network opt-in, excluded from ordinary `check`):
 

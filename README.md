@@ -6,9 +6,9 @@ An independent Android installer focused on tizen-youtube. No PC, Termux, or TV-
 
 Made possible by the work of **SushyDev, reisxd, the Apps2Samsung authors, and the Tizen homebrew community**. See [Inspiration and credits](#inspiration-and-credits) for implementation sources and related projects.
 
-**[Download APK (experimental)](https://github.com/Readiz/tizen-youtube-installer/releases/download/v0.3.19-experimental/tizen-youtube-installer-0.3.19-experimental.apk)** · Android 8.0+ · English · [Build an APK](docs/BUILDING.md) · [CI builds](https://github.com/Readiz/tizen-youtube-installer/actions/workflows/android.yml)
+**[Download APK](https://github.com/Readiz/tizen-youtube-installer/releases/download/v0.3.20/tizen-youtube-installer-0.3.20.apk)** · Android 8.0+ · English · [Build an APK](docs/BUILDING.md) · [CI builds](https://github.com/Readiz/tizen-youtube-installer/actions/workflows/android.yml)
 
-Screenshots and steps below describe version 0.3.19.
+Screenshots and steps below describe version 0.3.20.
 
 <p>
   <img src="docs/images/home.png" alt="English home screen with the selected TV and app version" width="260">
@@ -56,7 +56,7 @@ Guide reference: [Samsung Developer — TV device setup](https://developer.samsu
 
 </details>
 
-> Experimental debug APK; compatibility depends on your TV and the app. Keep this installer and its data to preserve the signing keys needed for future updates.
+> Compatibility depends on your TV and the app. Keep this installer and its data to preserve the signing keys needed for future updates.
 
 ## Inspiration and credits
 

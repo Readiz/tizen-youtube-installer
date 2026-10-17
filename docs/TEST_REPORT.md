@@ -1,13 +1,25 @@
 # Verification report — tizen-youtube Installer
 
-## Current build — 0.3.19 / 2026-10-17
+## Current build — 0.3.20 / 2026-10-17
 
-Native Android app, versionCode **28**, versionName **0.3.19-experimental**.
+Native Android app, versionCode **29**, versionName **0.3.20**.
 The four-step flow is **TV select → TV setup → Select app version → Install**.
 The app is English-only. Selected TV and app summaries use **Selected:**;
 TV names decode entities for display, and each operation shows progress in its own step.
 
-## Current verification — 0.3.19
+## Current verification — 0.3.20
+
+- Removed the experimental label from About, the file-size diagnostic, current
+  download copy and version name. VersionCode is 29; versionName is **0.3.20**.
+- APK/test APK build and Android lint passed: **0 errors / 5 existing warnings**.
+- Updated the installed emulator app in place and opened About. Inspected the
+  rendered text and verified the former label is absent. Package metadata and
+  the unchanged APK signing certificate were also verified.
+- This is a wording/version update. Installation behavior is unchanged; no new
+  behavioral tests or physical TV installation were performed. Previous checks
+  are recorded separately below.
+
+## Previous verification — 0.3.19
 
 - Step 4 displays **A Samsung account may be required during installation.**
   directly above Install, using the same subdued text style as the version note.
@@ -59,14 +71,14 @@ physical TV installation, live Samsung sign-in/certificate issuance or a WGT dow
 
 | Item | Value |
 | --- | --- |
-| APK SHA-256 | `54a19297ff74bc2dd0a9dc9c49a18aa85e72f3c9d33be0ff82bad83a2007f977` |
+| APK SHA-256 | `534674e7104066a87cf984c8730403b522dcbdf2776a2233c07875d88c9a4bec` |
 | Signing certificate SHA-256 | `49b681fb7cbf592298c16916e020b07f8f9fae16529231474045c18ae393f100` |
 | Android test runtime | Android 15 / API 35 emulator |
 | Build environment | JDK 17, Gradle 8.11.1, Android SDK 36 / Build Tools 35.0.0 |
 
 ## Existing protocol evidence
 
-The installation/signing core was not changed in this UI iteration. Prior core
+The installation/signing logic was not changed in this iteration. Prior core
 verification recorded **78 passed, 0 failed**, including the device-profile v1
 endpoint correction and six issuer-response regressions. These are prior results,
 not a claim that the core suite or physical-TV checks were repeated for this build.

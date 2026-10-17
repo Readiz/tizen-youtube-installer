@@ -1,6 +1,6 @@
 # Security boundaries
 
-Experimental software. No claim of a security audit or end-to-end TV validation.
+No claim of a security audit or end-to-end TV validation.
 
 - App does not collect Samsung passwords; sign-in is in the system browser.
 - Callback uses a random 256-bit state and listens only on loopback. Samsung tokens

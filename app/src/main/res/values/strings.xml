@@ -46,7 +46,7 @@
     <string name="details">Details</string>
     <string name="no_details">No activity yet.</string>
     <string name="about">About</string>
-    <string name="about_body">Install tizen-youtube by SushyDev and contributors on your Samsung TV from this phone. This is an independent, experimental installer, not an official Samsung or YouTube app. Compatibility depends on your TV and the selected package.\n\nSigning keys stay encrypted on this phone. Do not uninstall this installer or clear its data: you need those keys to update your TV apps.</string>
+    <string name="about_body">Install tizen-youtube by SushyDev and contributors on your Samsung TV from this phone. This is an independent installer, not an official Samsung or YouTube app. Compatibility depends on your TV and the selected package.\n\nSigning keys stay encrypted on this phone. Do not uninstall this installer or clear its data: you need those keys to update your TV apps.</string>
     <string name="phase_idle">Ready when you are</string>
     <string name="phase_resolving">Finding the app</string>
     <string name="phase_downloading">Downloading and checking the app</string>

@@ -33,7 +33,7 @@ data class ReleaseAsset(val repo: RepoRef, val releaseId: Long, val tag: String,
     init {
         require(releaseId > 0 && assetId > 0 && tag.isNotBlank() && tag.length <= 256)
         require(name.length <= 255 && name.endsWith(".wgt", true) && name.none { it.isISOControl() || it == '/' || it == '\\' }) { "WGT 파일 이름을 확인하세요." }
-        require(size in 1..GitHubReleases.MAX_WGT.toLong()) { "이 실험판은 64 MiB 이하 WGT만 지원합니다." }
+        require(size in 1..GitHubReleases.MAX_WGT.toLong()) { "64 MiB 이하 WGT만 지원합니다." }
         val uri = URI(url)
         val prefix = "/${repo.fullName}/releases/download/"
         require(uri.scheme == "https" && uri.host == "github.com" && uri.port == -1 && uri.userInfo == null && uri.rawQuery == null && uri.rawFragment == null &&
