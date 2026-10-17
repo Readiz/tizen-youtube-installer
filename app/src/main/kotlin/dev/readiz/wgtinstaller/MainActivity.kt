@@ -45,6 +45,7 @@ class MainActivity : Activity() {
     private var selected: ReleaseAsset? = null
     private var local: LocalWidget? = null
     private var customSource = false
+    private var customRepository = ""
     private var discoveryMessage: String? = null
     private val worker = Executors.newSingleThreadExecutor()
     private var token = Cancellation()
@@ -76,6 +77,7 @@ class MainActivity : Activity() {
         selected = assets.firstOrNull { it.assetId == savedInstanceState?.getLong("selected") }
         local = savedInstanceState?.getString("local")?.let { runCatching { LocalWidget.decode(it) }.getOrNull() }
         customSource = savedInstanceState?.getBoolean("customSource") ?: false
+        customRepository = savedInstanceState?.getString("customRepository").orEmpty()
         televisions = savedInstanceState?.getStringArrayList("televisions")?.mapNotNull {
             val fields = it.split('\t', limit = 3)
             if (fields.size == 3) Television(fields[0], fields[1], fields[2]) else null
@@ -161,6 +163,7 @@ class MainActivity : Activity() {
                 "ip" -> showManualIp(draft ?: host)
                 "versions" -> if (assets.isNotEmpty()) showVersions()
                 "custom" -> showCustom()
+                "repository" -> showRepository(draft ?: customRepository)
                 "confirm" -> confirmInstall()
                 "about" -> showAbout()
             }
@@ -176,7 +179,8 @@ class MainActivity : Activity() {
     override fun onDestroy() { dismissPicker(); token.cancel(); worker.shutdownNow(); super.onDestroy() }
     override fun onSaveInstanceState(out: Bundle) {
         out.putString("ip", host); out.putString("tvName", tvName)
-        out.putBoolean("customSource", customSource); out.putString("popup", activePopup)
+        out.putBoolean("customSource", customSource); out.putString("customRepository", customRepository)
+        out.putString("popup", activePopup)
         out.putString("popupInput", popupInput?.text?.toString()); out.putString("discoveryMessage", discoveryMessage)
         out.putStringArrayList("televisions", ArrayList(televisions.map { "${it.ip}\t${it.name}\t${it.model}" }))
         out.putStringArrayList("assets", ArrayList(assets.map { it.encode() }))
@@ -274,9 +278,7 @@ class MainActivity : Activity() {
     }
     private fun showCustom() {
         val content = dialogColumn()
-        content.addView(button(R.string.find_app) {
-            dismissPicker(); resolve(true)
-        })
+        content.addView(button(R.string.find_app) { showRepository() })
         content.addView(button(R.string.choose_local) {
             dismissPicker()
             @Suppress("DEPRECATION")
@@ -288,6 +290,28 @@ class MainActivity : Activity() {
         content.addView(text(getString(R.string.local_note), 12).apply { setTextColor(muted) })
         popup("custom", AlertDialog.Builder(this).setTitle(R.string.other_apps).setView(ScrollView(this).apply { addView(content) })
             .setNegativeButton(R.string.cancel, null))
+    }
+    private fun showRepository(draft: String = customRepository) {
+        val field = input(R.string.repository_hint).apply {
+            inputType = android.text.InputType.TYPE_CLASS_TEXT or android.text.InputType.TYPE_TEXT_VARIATION_URI
+            contentDescription = getString(R.string.repository_title)
+            setText(draft)
+        }
+        val content = dialogColumn().apply {
+            addView(text(getString(R.string.repository_note), 12).apply { setTextColor(muted) })
+            addView(field)
+        }
+        val dialog = popup("repository", AlertDialog.Builder(this).setTitle(R.string.repository_title).setView(content)
+            .setNegativeButton(R.string.cancel, null).setPositiveButton(R.string.find_app, null))
+        popupInput = field
+        dialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener {
+            if (!free()) return@setOnClickListener
+            val source = runCatching { RepoRef.parse(field.text.toString()) }.getOrElse {
+                field.error = getString(R.string.error_repo); return@setOnClickListener
+            }
+            customRepository = source.fullName
+            dismissPicker(); resolve(true, source.fullName)
+        }
     }
     private fun versionLabel(asset: ReleaseAsset): String {
         val version = Regex("(?i)tizen[-_ ]?(\\d+\\.\\d+)(?=[-_.]|$)").find(asset.name)?.groupValues?.get(1)
@@ -323,9 +347,8 @@ class MainActivity : Activity() {
             }.setNegativeButton(R.string.cancel, null))
     }
     private fun clearRelease() { assets = emptyList(); selected = null; local = null; render(InstallState.snapshot) }
-    private fun resolve(customSelection: Boolean) {
+    private fun resolve(customSelection: Boolean, source: String = getString(R.string.youtube_repo)) {
         if (!free()) return
-        val source = getString(R.string.youtube_repo)
         customSource = customSelection; clearRelease()
         token.cancel(); token = Cancellation(); val c = token; busy = true; importing = false; render(InstallState.snapshot)
         worker.execute {

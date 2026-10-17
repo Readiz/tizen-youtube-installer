@@ -30,6 +30,9 @@
     <string name="version_year_note">Years refer to the release year of your Tizen TV.</string>
     <string name="youtube">Choose version</string>
     <string name="find_app">Find app</string>
+    <string name="repository_title">GitHub repository</string>
+    <string name="repository_hint">owner/repo</string>
+    <string name="repository_note">Enter owner/repo or a GitHub repository URL.</string>
     <string name="finding_app">Finding app…</string>
     <string name="reading_wgt">Reading WGT…</string>
     <string name="choose_file">Choose a file for your TV</string>
@@ -57,7 +60,7 @@
     <string name="phase_complete">Installed. Open the app on your TV to check that it works.</string>
     <string name="phase_cancelled">Stopped. If installation had already started, check the app on your TV before trying again.</string>
     <string name="error_generic">Could not finish. Check the details below before trying again.</string>
-    <string name="error_repo">The app source is unavailable. Please try again later.</string>
+    <string name="error_repo">Enter owner/repo or https://github.com/owner/repo.</string>
     <string name="error_ip">Enter your TV address on the same Wi-Fi, such as 192.168.0.20.</string>
     <string name="error_selection">Choose a version or a custom WGT first.</string>
     <string name="error_digest">This file has no verification checksum. Choose another release or ask its publisher to upload a new file.</string>

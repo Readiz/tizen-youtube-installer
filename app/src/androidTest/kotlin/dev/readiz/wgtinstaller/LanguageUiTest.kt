@@ -220,6 +220,44 @@ class LanguageUiTest {
         } finally { instrumentation.removeMonitor(monitor) }
     }
 
+    @Test fun customRepositoryValidatesInputAndRestoresDraftWithoutClearingSelection() {
+        ActivityScenario.launch(MainActivity::class.java).use { scenario ->
+            scenario.onActivity { activity ->
+                seed(activity)
+                button(activity, R.string.youtube).performClick()
+                requireNotNull(dialog(activity)).listView.performItemClick(null, 0, 0)
+                val selected = field(activity, "selected")
+                button(activity, R.string.short_apps).performClick()
+                descendants(requireNotNull(dialog(activity)).window!!.decorView).filterIsInstance<Button>()
+                    .single { it.text == "Find app" }.performClick()
+                val repository = requireNotNull(dialog(activity))
+                val input = descendants(repository.window!!.decorView).filterIsInstance<EditText>().single()
+                assertEquals("", input.text.toString())
+                for (invalid in listOf("", "https://example.com/owner/repo", "owner/repo/releases")) {
+                    input.setText(invalid)
+                    repository.getButton(AlertDialog.BUTTON_POSITIVE).performClick()
+                    assertTrue(repository.isShowing); assertNotNull(input.error)
+                    assertEquals(false, field(activity, "busy"))
+                    assertEquals(selected, field(activity, "selected"))
+                }
+                input.setText("https://github.com/reisxd/TizenBrew.git")
+            }
+            scenario.recreate(); instrumentation.waitForIdleSync()
+            scenario.onActivity { activity ->
+                val repository = requireNotNull(dialog(activity))
+                assertEquals("repository", field(activity, "activePopup"))
+                assertEquals("https://github.com/reisxd/TizenBrew.git",
+                    descendants(repository.window!!.decorView).filterIsInstance<EditText>().single().text.toString())
+                repository.getButton(AlertDialog.BUTTON_NEGATIVE).performClick()
+                assertNotNull(field(activity, "selected"))
+                assertTrue(button(activity, R.string.install).isEnabled)
+                assertFalse(descendants(activity.window.decorView).any { it is EditText })
+                button(activity, R.string.youtube).performClick()
+                assertEquals("Tizen 5.5 · 2020 or newer", requireNotNull(dialog(activity)).listView.adapter.getItem(0))
+            }
+        }
+    }
+
     @Test fun localDocumentReplacesSelectionAndSurvivesRecreation() {
         ActivityScenario.launch(MainActivity::class.java).use { scenario ->
             scenario.onActivity { activity ->
@@ -357,6 +395,10 @@ class LanguageUiTest {
             scenario.onActivity { activity ->
                 requireNotNull(dialog(activity)).dismiss(); button(activity, R.string.short_apps).performClick()
             }; capture("plain-custom")
+            scenario.onActivity { activity ->
+                descendants(requireNotNull(dialog(activity)).window!!.decorView).filterIsInstance<Button>()
+                    .single { it.text == "Find app" }.performClick()
+            }; capture("plain-repository")
             scenario.onActivity { activity ->
                 invoke(activity, "showAbout")
             }; capture("plain-about")

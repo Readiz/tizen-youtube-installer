@@ -21,7 +21,7 @@ gradle --no-daemon :app:connectedDebugAndroidTest
 
 These tests exercise English-only behavior (including legacy Korean preferences),
 the four-step home screen and TV setup guide return, single/multiple/absent TV discovery results, manual IP
-validation, version selection, input-free Custom controls and local document import. They also
+validation, version selection, Custom repository validation/draft restoration and local document import. They also
 cover popup/input restoration, saved TV-name entity decoding, per-step progress and
 cancellation, fresh source consent and Samsung browser prompting.
 AndroidX dependencies and the fixture document provider are test-only.

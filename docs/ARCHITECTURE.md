@@ -9,9 +9,11 @@ TV search, app lookup and installation each own their progress and cancellation 
 installation logs remain in step 4. Button emphasis follows the action: a filled Install button, tonal selection buttons, neutral helpers and a distinct Stop control. TV name entities are decoded only for display, including saved names.
 TV discovery always opens a chooser, even for a single result;
 manual entry is available through Enter another TV IP at the bottom and after an unsuccessful search.
-Default package selection opens a short Tizen-version popup; the year note refers to the TV release year. The source is fixed
-to SushyDev/tizen-youtube. The Custom popup offers Find app for full file names
-and another Custom button for local WGT files; there is no repository input. The Install
+Default package selection opens a short Tizen-version popup; the year note refers to the TV release year. The default source is
+SushyDev/tizen-youtube. Custom → Find app opens a GitHub repository input, validates
+owner/repo or an HTTPS GitHub URL, and lists that repository’s release files. Input
+drafts survive recreation; cancelling or invalid input preserves the selected app.
+Another Custom button opens local WGT files. The Install
 step confirms the exact file, source and TV before granting source consent.
 Step 2 opens the illustrated first-time TV guide. The information icon opens app details.
 [Apps2Samsung for Android](https://github.com/Apps2Samsung/Apps2Samsung) is the
