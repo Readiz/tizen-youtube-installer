@@ -1,5 +1,27 @@
 # Source traceability
 
+## 2026-10-17 / License review
+
+Both implementation-source projects explicitly declare GPL-3.0-only in their
+package metadata. The pinned declarations and license text are linked in
+[License details](LICENSING.md). The local Kotlin source headers use the same
+identifier; the existing GPLv3 license text remains unchanged.
+
+The following upstream files were re-fetched and matched the blob IDs recorded
+in the earlier implementation notes below:
+
+| Repository and pinned commit | File | Verified blob SHA |
+|---|---|---|
+| SushyDev/tizen-homebrew at f90b005c8c354cafc027f12b37fe04b6cf0162f2 | service/src/install/signature.js | 1d462711670eaf18b7d227530e27125c63408865 |
+| Same | service/src/tv/adb.js | 8ee135277c2e126a5ad52e0d54becbf0bb064fb9 |
+| Same | tools/installing.js | bfff01240c6f23100767934032f43faf8ac5e3f5 |
+| reisxd/tizen.js at 45b00106149d0c8eff74ead4a979c909dd80efd6 | src/samsungCertificateCreator.js | b9aec8cc8e9ea0152dfbf8b353cba6835cf08d8b |
+
+The XML signature template, property references and serialization in local
+Wgt.kt were compared with the recorded signature.js source. This confirms
+the documented adaptation beyond shared protocol concepts. The local Kotlin
+2.1.21 stdlib POM declares Apache-2.0. No new runtime dependency was introduced.
+
 ## 0.3.1 / Displayed guide reference
 
 The guide screen and README link only to [Samsung Developer — TV device setup](https://developer.samsung.com/smarttv/develop/getting-started/using-sdk/tv-device.html).

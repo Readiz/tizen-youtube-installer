@@ -52,7 +52,7 @@ not features claimed to be available today:
    use a dedicated test app/device when ownership would otherwise conflict.
 2. Keep tizen-youtube available from its built-in source with one tap. Keep
    local WGT import secondary under Custom and preserve publisher identity,
-   release details and source consent. Repository entry is not part of the UI.
+   release details and source consent. Repository entry is available under Custom → Find app.
 3. Make WGT selection understandable with available TV/package metadata and
    upstream guidance. Explain ambiguous choices and unsupported cases; do not
    infer compatibility solely from a filename or silently pick a package.

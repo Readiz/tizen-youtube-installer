@@ -1,12 +1,13 @@
-tizen-youtube Installer for Android, experimental
+tizen-youtube Installer for Android
 An independent installer focused on SushyDev/tizen-youtube, with optional custom WGT installation.
 Based on the earlier TV Bootstrap / WGT Installer implementation.
 SPDX-License-Identifier: GPL-3.0-only
 
 This implementation adapts protocol and signing conventions from:
 - SushyDev/tizen-homebrew (GPL-3.0-only), by SushyDev and contributors.
-- reisxd/tizen.js (GPL-3.0), by reisxd and contributors.
+- reisxd/tizen.js (GPL-3.0-only), by reisxd and contributors.
 Exact consulted files and blob SHAs appear in docs/SOURCES.md.
+License provenance is documented in docs/LICENSING.md.
 
 Related prior work: Apps2Samsung, by its authors and contributors, already
 provides a standalone Android certificate/signing/SDB installation workflow.
