@@ -108,6 +108,7 @@
     <string name="login_title">Samsung sign-in</string>
     <string name="login_continue">Sign in</string>
     <string name="install_title">4. Install</string>
+    <string name="samsung_account_note">A Samsung account may be required during installation.</string>
     <string name="choose_version">Choose version</string>
     <string name="choose_tv">Choose TV</string>
     <string name="tv_device">TV</string>

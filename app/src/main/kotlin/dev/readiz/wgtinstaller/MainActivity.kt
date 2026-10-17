@@ -138,6 +138,7 @@ class MainActivity : Activity() {
 
         divider(body)
         body.addView(text(getString(R.string.install_title), 18, true))
+        body.addView(text(getString(R.string.samsung_account_note), 13).apply { setTextColor(muted) })
         install = button(R.string.install) { confirmInstall() }; body.addView(install)
         activitySection = column(); body.addView(activitySection)
         status = text("", 14, true).apply { accessibilityLiveRegion = View.ACCESSIBILITY_LIVE_REGION_POLITE }

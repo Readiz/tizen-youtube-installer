@@ -6,8 +6,8 @@ android {
         applicationId = "dev.readiz.wgtinstaller"
         minSdk = 26
         targetSdk = 36
-        versionCode = 27
-        versionName = "0.3.18-experimental"
+        versionCode = 28
+        versionName = "0.3.19-experimental"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
     compileOptions { sourceCompatibility = JavaVersion.VERSION_17; targetCompatibility = JavaVersion.VERSION_17 }

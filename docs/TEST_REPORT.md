@@ -1,13 +1,26 @@
 # Verification report — tizen-youtube Installer
 
-## Current build — 0.3.18 / 2026-10-17
+## Current build — 0.3.19 / 2026-10-17
 
-Native Android app, versionCode **27**, versionName **0.3.18-experimental**.
+Native Android app, versionCode **28**, versionName **0.3.19-experimental**.
 The four-step flow is **TV select → TV setup → Select app version → Install**.
 The app is English-only. Selected TV and app summaries use **Selected:**;
 TV names decode entities for display, and each operation shows progress in its own step.
 
-## Custom repository flow and UI verification
+## Current verification — 0.3.19
+
+- Step 4 displays **A Samsung account may be required during installation.**
+  directly above Install, using the same subdued text style as the version note.
+- APK and test APK build passed. Android lint: **0 errors / 5 existing warnings**.
+- Existing screenshot instrumentation passed (**1 test**); inspected the selected
+  home screen. Also checked step 4 at **320 dp / 160% font scale**: the notice wraps
+  to two lines and stays fully visible above the button. README home image refreshed.
+- In-place emulator update, package versionCode 28 and unchanged signing
+  certificate were verified. No new behavioral test was added for this copy-only
+  change; the 14-test regression and live lookup results below belong to 0.3.18.
+- No physical TV installation or live Samsung sign-in was repeated.
+
+## Previous verification — 0.3.18
 
 - Custom → Find app now opens a GitHub repository input. It accepts `owner/repo`
   or an HTTPS GitHub repository URL (including `.git`); malformed input remains
@@ -46,7 +59,7 @@ physical TV installation, live Samsung sign-in/certificate issuance or a WGT dow
 
 | Item | Value |
 | --- | --- |
-| APK SHA-256 | `db2e0877aa98d0cc683741e9c429d12cfbe55a83af943a1de14800b7ae60c0f1` |
+| APK SHA-256 | `54a19297ff74bc2dd0a9dc9c49a18aa85e72f3c9d33be0ff82bad83a2007f977` |
 | Signing certificate SHA-256 | `49b681fb7cbf592298c16916e020b07f8f9fae16529231474045c18ae393f100` |
 | Android test runtime | Android 15 / API 35 emulator |
 | Build environment | JDK 17, Gradle 8.11.1, Android SDK 36 / Build Tools 35.0.0 |

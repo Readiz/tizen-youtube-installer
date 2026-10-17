@@ -6,9 +6,9 @@ An independent Android installer focused on tizen-youtube. No PC, Termux, or TV-
 
 Made possible by the work of **SushyDev, reisxd, the Apps2Samsung authors, and the Tizen homebrew community**. See [Inspiration and credits](#inspiration-and-credits) for implementation sources and related projects.
 
-**Android 8.0+ · English** · [Build an APK](docs/BUILDING.md) · [CI builds](https://github.com/Readiz/tizen-youtube-installer/actions/workflows/android.yml)
+**[Download APK (experimental)](https://github.com/Readiz/tizen-youtube-installer/releases/download/v0.3.19-experimental/tizen-youtube-installer-0.3.19-experimental.apk)** · Android 8.0+ · English · [Build an APK](docs/BUILDING.md) · [CI builds](https://github.com/Readiz/tizen-youtube-installer/actions/workflows/android.yml)
 
-Screenshots and steps below describe the 0.3.18 development build.
+Screenshots and steps below describe version 0.3.19.
 
 <p>
   <img src="docs/images/home.png" alt="English home screen with the selected TV and app version" width="260">
@@ -33,7 +33,7 @@ Search and lookup progress appears directly under the corresponding step; instal
 1. **TV select.** Connect the phone and TV to the same Wi-Fi, then tap **Find TV**. Choose a TV in the popup, even when only one is found. **Enter another TV IP** is always available at the bottom for manual entry, including when no TV is found.
 2. **TV setup.** Open **TV setup guide** for the illustrated Developer Mode and phone-IP instructions. Return here after setting up the TV.
 3. **Select app version.** Tap **Choose version**, then choose **Tizen 5.5 for 2020 or newer models** or **Tizen 5.0 for 2019 models** in the popup. The years refer to the Tizen TV’s release year. No repository entry or file list appears on the home screen.
-4. **Install.** Tap **Install** in section 4. Check the file, publisher and TV in the confirmation popup, then confirm that you trust the source. If prompted, sign in to Samsung in the browser and return to the installer.
+4. **Install.** A Samsung account may be required during installation. Tap **Install** in section 4. Check the file, publisher and TV in the confirmation popup, then confirm that you trust the source. If prompted, sign in to Samsung in the browser and return to the installer.
 
 **Custom install:** tap **Custom** beside Select app version. **Find app** opens a GitHub repository input. Enter `owner/repo` or `https://github.com/owner/repo`, then tap **Find app** to choose a WGT from that repository’s latest public release. The additional **Custom** button opens the phone’s WGT picker. Local files are limited to 64 MiB. The app is English-only, including on phones that previously saved Korean as the app language.
 
